@@ -20,4 +20,11 @@ export const InputText = styled.input `
     color: #fff;
     border: none;
     height: 30px;
+    width: 100%;
+    max-width: 80%;
+
+    :focus {
+        box-shadow: 0;
+        outline: 0;
+    }
 `

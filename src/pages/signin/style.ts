@@ -13,12 +13,27 @@ export const Container = styled.main `
 
     @media screen and (max-width: 1060px) {
         flex-direction: column;
-
-        div{
-            max-width: 400px; 
-            padding-bottom: 40px;
-        }
     }
+`
+
+export const Wrapper = styled.div `
+    max-width: 300px;
+
+    @media screen and (max-width: 1060px) {
+        padding-top: 40px;
+    }
+`
+
+export const ErrorMsg = styled.div `
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    width: 300px;
+    margin-top: 20px;
+    line-height: 22px;
+
+    color: #ab0000;
 `
 
 export const Title = styled.h2 `
@@ -43,4 +58,10 @@ export const Text = styled.p `
     line-height: 22px;
 
     color: #fff;
+`
+
+export const Column = styled.div `
+    @media screen and (max-width: 1060px) {
+        max-width: 400px;
+    }
 `
