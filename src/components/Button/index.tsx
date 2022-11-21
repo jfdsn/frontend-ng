@@ -1,4 +1,3 @@
-import { type } from "os";
 import { ButtonContainer } from "./style";
 
 type ButtonType = {
@@ -8,7 +7,7 @@ type ButtonType = {
     type?: "button" | "submit" | "reset";
 };
 
-export const Button = ({ variant="primary", title, onClick, type }: ButtonType) : JSX.Element => {
+export const Button = ({ variant="primary", title, onClick, type}: ButtonType) : JSX.Element => {
     return (
         <ButtonContainer resource={variant} type={type} onClick={onClick} title={title}>
             {title}

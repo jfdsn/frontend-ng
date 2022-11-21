@@ -1,26 +1,34 @@
 import { 
     Wrapper,
     Container,
-    Column,
     Row
 } from "./style";
 import { Button } from "../Button";
 import logo from "../../assets/logo-ng.png";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+type HeaderType = {
+    auth?: boolean;
+}
+
+export const Header = ({ auth=false }:HeaderType) => {
     return (
         <Wrapper>
             <Container>
                 <Row>
                     <Link to="/">
                         <img src={logo} alt="logo NG" />
-                    </Link>
-                    
+                    </Link>   
                 </Row>
                 <Row>
-                    <Button variant="secondary" title="Entrar" onClick={"*"} />
-                    <Button variant="secondary" title="Cadastrar" onClick={"*"} />
+                    {auth ? (
+                        <Button variant="secondary" title="Sair" onClick={"#"}></Button>
+                    ):(
+                        <>
+                            <Button variant="secondary" title="Entrar"  />
+                            <Button variant="secondary" title="Cadastrar" />
+                        </>
+                    )}
                 </Row>
             </Container>
         </Wrapper>

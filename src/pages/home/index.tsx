@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Title, Container, Text } from "./style";
@@ -11,7 +11,7 @@ export const Home = () => {
                 <div>
                     <Title>A CARTEIRA DA NOVA GERAÇÃO</Title>
                     <Text>É para todas as idades!</Text>
-                    <Button title="Começar Agora!" onClick={() => {"null"}}></Button>
+                    <Button title="Faça parte agora!" onClick={() => {"null"}}></Button>
                 </div>
                 <div>
                     <Title>SOBRE</Title>
