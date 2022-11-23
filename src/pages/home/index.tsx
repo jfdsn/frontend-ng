@@ -1,17 +1,19 @@
-import { useNavigate } from "react-router-dom";
-import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Title, Container, Text } from "./style";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
 
 export const Home = () => {
+  
+    const { auth } = useContext(AuthContext);
+
     return (
         <>
-            <Header />
+            <Header auth={auth} />
             <Container>
                 <div>
                     <Title>A CARTEIRA DA NOVA GERAÇÃO</Title>
                     <Text>É para todas as idades!</Text>
-                    <Button title="Faça parte agora!" onClick={() => {"null"}}></Button>
                 </div>
                 <div>
                     <Title>SOBRE</Title>

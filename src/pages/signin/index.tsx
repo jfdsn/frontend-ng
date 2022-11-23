@@ -1,10 +1,37 @@
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
-import { Title, Container, Text, ErrorMsg, Wrapper, Column } from "./style";
+import { Title, Container, Text, Msg, Wrapper, Column } from "./style";
 import { MdLock, MdAccountBox} from "react-icons/md";
+import { useState } from "react";
+import { api } from "../../services/api";
+
+
 
 export const Signin = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [msg, setMsg] = useState("");
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        try {
+            await api.post("/user", {username, password});
+            setMsg("Conta criada!");
+        } catch (error) {
+            setMsg("Usuário ou senha inválidos.");
+        }
+            
+    };
+
+    const handleInputUser = (e: any) => {
+        setUsername(e.target.value);
+    };
+
+    const handleInputPass = (e: any) => {
+        setPassword(e.target.value);
+    };
+
     return (
         <>
             <Header />
@@ -15,13 +42,17 @@ export const Signin = () => {
                 </Column>
                 <Column>
                     <Wrapper>
-                        <Title>Faça cadastro</Title>
-                        <form>
-                            <Input placeholder="nome de usuário" leftIcon={<MdAccountBox />}></Input>
-                            <Input placeholder="senha" leftIcon={<MdLock />}></Input>
-                            <Button type="submit" title="Cadastrar"></Button>
+                        <Title>FAÇA CADASTRO</Title>
+                        <form onSubmit={handleSubmit}>
+                            <span>(4 ou mais caracteres)</span>
+                            <Input type="text" placeholder="usuário" 
+                                onChange={handleInputUser} leftIcon={<MdAccountBox />} />
+                            <span>(8 ou mais caracteres, ao menos um digito e uma letra maiuscula)</span>      
+                            <Input type="password" placeholder="senha" 
+                                onChange={handleInputPass} leftIcon={<MdLock />} />
+                            <Button type="submit" title="Cadastrar" />
                         </form>
-                            <ErrorMsg>Error aqui!</ErrorMsg>
+                            <Msg>{msg}</Msg>
                     </Wrapper>
                 </Column>
             </Container>

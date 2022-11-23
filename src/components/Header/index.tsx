@@ -1,17 +1,20 @@
-import { 
-    Wrapper,
-    Container,
-    Row
-} from "./style";
+import { Wrapper, Container, Row } from "./style";
 import { Button } from "../Button";
 import logo from "../../assets/logo-ng.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
+
 
 type HeaderType = {
     auth?: boolean;
 }
 
 export const Header = ({ auth=false }:HeaderType) => {
+    const navigate = useNavigate();
+    
+    const { logout } = useContext(AuthContext);
+
     return (
         <Wrapper>
             <Container>
@@ -22,11 +25,17 @@ export const Header = ({ auth=false }:HeaderType) => {
                 </Row>
                 <Row>
                     {auth ? (
-                        <Button variant="secondary" title="Sair" onClick={"#"}></Button>
+                        <>
+                            <Button variant="secondary" title="Minha conta"
+                                 onClick={()=>{navigate("/user")}} />
+                            <Button variant="secondary" title="Sair" onClick={logout} />
+                        </> 
                     ):(
                         <>
-                            <Button variant="secondary" title="Entrar"  />
-                            <Button variant="secondary" title="Cadastrar" />
+                            <Button variant="secondary" title="Entrar"
+                                onClick={()=>{navigate("/login")}}  />
+                            <Button variant="secondary" title="Cadastrar"
+                                onClick={()=>{navigate("/signin")}}  />
                         </>
                     )}
                 </Row>

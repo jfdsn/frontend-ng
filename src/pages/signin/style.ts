@@ -24,7 +24,7 @@ export const Wrapper = styled.div `
     }
 `
 
-export const ErrorMsg = styled.div `
+export const Msg = styled.div `
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
@@ -33,7 +33,7 @@ export const ErrorMsg = styled.div `
     margin-top: 20px;
     line-height: 22px;
 
-    color: #ab0000;
+    color: #e88800;
 `
 
 export const Title = styled.h2 `
