@@ -12,6 +12,7 @@ import { dataHandle } from "../../services/dataHandle";
 
 
 
+
 export const User = () => {
     const { auth } = useContext(AuthContext);
     const [saldo, setSaldo] = useState<number>(0);
@@ -70,8 +71,8 @@ export const User = () => {
     const handleSubmitFiltro = async (e: any) => {
         e.preventDefault();
         try {
-            //await api.get("/filter", {date, sent, received});
-            console.log({date, sent, received})
+            const res = await api.post("/filter", {date, sent, received});
+            setData(dataHandle(res.data));
         } catch (error) {
             console.log(error);
         }       

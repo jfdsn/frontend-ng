@@ -65,3 +65,7 @@ export const Column = styled.div `
         max-width: 400px;
     }
 `
+
+export const Span = styled.span `
+    font-size: 12px;
+`

@@ -1,6 +1,7 @@
 import { Container, Text, HideButton } from "./style";
-import { MdVisibilityOff, MdVisibility } from "react-icons/md";
-import { useState } from "react";
+import { MdVisibilityOff, MdVisibility, MdAutorenew } from "react-icons/md";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
 type BalanceType = {
     value: number;
@@ -8,22 +9,36 @@ type BalanceType = {
 
 export const Balance = ({value}: BalanceType) => {
     const [hide, setHide] = useState(true);
+    const [valor, setValor] = useState(value);
     const [real, setReal] = useState("---------------");
 
-    const handleClick = () => {
+    useEffect(()=> {
+        setReal(valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }))
+    }, [valor]);
+    
+    const handleClickHide = () => {
         if(hide) {
             setHide(false);
-            setReal(value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+            setReal(valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
         } else {
             setHide(true);
             setReal("---------------"); 
         }  
     };
 
+    const handleClickAtt = async () => {
+        const res = await api.get("/balance");
+        setValor(parseFloat(res.data.balance));
+        if(!hide)setHide(false);
+    };
+
     return (
         <Container>
             <Text>{real}</Text>
-            <HideButton onClick={handleClick}>{!hide ? <MdVisibilityOff /> : <MdVisibility />}</HideButton>
+            <HideButton onClick={handleClickAtt} title="atualizar">{<MdAutorenew />}</HideButton>
+            <HideButton onClick={handleClickHide} title="Esconder/Mostrar">
+                {!hide ? <MdVisibilityOff /> : <MdVisibility />}
+            </HideButton>
         </Container>
     )
 };

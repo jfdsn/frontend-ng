@@ -1,7 +1,7 @@
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
-import { Title, Container, Text, Msg, Wrapper, Column } from "./style";
+import { Title, Container, Text, Msg, Wrapper, Column, Span } from "./style";
 import { MdLock, MdAccountBox} from "react-icons/md";
 import { useState } from "react";
 import { api } from "../../services/api";
@@ -44,10 +44,10 @@ export const Signin = () => {
                     <Wrapper>
                         <Title>FAÇA CADASTRO</Title>
                         <form onSubmit={handleSubmit}>
-                            <span>(4 ou mais caracteres)</span>
+                            <Span>(4 ou mais caracteres)</Span>
                             <Input type="text" placeholder="usuário" 
                                 onChange={handleInputUser} leftIcon={<MdAccountBox />} />
-                            <span>(8 ou mais caracteres, ao menos um digito e uma letra maiuscula)</span>      
+                            <Span>(8 ou mais caracteres, ao menos um número e uma letra maiúscula)</Span>      
                             <Input type="password" placeholder="senha" 
                                 onChange={handleInputPass} leftIcon={<MdLock />} />
                             <Button type="submit" title="Cadastrar" />
