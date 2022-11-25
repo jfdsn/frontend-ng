@@ -101,7 +101,7 @@ export const User = () => {
                             <Title>TRANSAÇÃO</Title>
                             <form onSubmit={handleSubmitTransaction}>
                                 <Input type="number" min="0.01" step="0.01" 
-                                    placeholder="Valor à transferir" onChange={handleInputValue}
+                                    placeholder="Valor a transferir" onChange={handleInputValue}
                                     leftIcon={<MdPaid />}/>
                                 <Input placeholder="Quem vai receber?" onChange={handleInputUser}
                                     leftIcon={<MdPermIdentity />}/>

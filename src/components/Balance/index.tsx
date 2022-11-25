@@ -8,7 +8,7 @@ type BalanceType = {
 }
 
 export const Balance = ({value}: BalanceType) => {
-    const [hide, setHide] = useState(true);
+    const [hide, setHide] = useState(false);
     const [valor, setValor] = useState(value);
     const [real, setReal] = useState("---------------");
 
