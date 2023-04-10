@@ -4,6 +4,12 @@
 Front-end do projeto proposto pelo tech challenge da empresa NG.Cash. É uma single page aplication desenvolvida
 em Reactjs e que faz comunicação com o Back-end também desenvolvido no mesmo desafio.
 
+![Imagem app pages](https://github.com/jfdsn/frontend-ng/blob/main/public/Imgs/home-page.png)
+![Imagem app pages](https://github.com/jfdsn/frontend-ng/blob/main/public/Imgs/cadastro-page.png)
+![Imagem app pages](https://github.com/jfdsn/frontend-ng/blob/main/public/Imgs/login-page.png)
+![Imagem app pages](https://github.com/jfdsn/frontend-ng/blob/main/public/Imgs/user-page.png)
+
+
 
 ## :hammer: Funcionalidades do projeto
 
@@ -21,11 +27,15 @@ A aplicação é dockerizada e é necessário seguir alguns passos antes do uso.
 - `Passo 2`: Acessar o terminal no diretório raiz da aplicação e executar o comando para criar a imagem
 da aplicação baseado no Dockefile:
 
-    "docker build -t front-ng ."
+```sh
+    docker build -t front-ng .
+```
 
 - `Passo 3`: O próximo passo é criar e executar o container com a imagem da aplicação:
 
-    "docker run --rm --name frontend -it -p 3000:3000 front-ng"
+```sh
+    docker run --rm --name frontend -it -p 3000:3000 front-ng
+```
 
 - `Passo 4`: Acessar a aplicação pelo navegador no caminho "localhost:3000/"
 
